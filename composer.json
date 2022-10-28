@@ -1,5 +1,5 @@
 {
-    "name": "omnipay/yoomoney",
+    "name": "tben/omnipay-yoomoney",
     "type": "library",
     "description": "Yoomoney gateway for Omnipay payment processing library",
     "keywords": [
@@ -20,7 +20,10 @@
         }
     ],
     "autoload": {
-        "psr-4": { "Omnipay\\YooMoney\\" : "src/" }
+        "psr-4": {
+            "Omnipay\\Yoomoney\\": "src",
+            "Omnipay\\Yoomoney\\Tests\\": "tests"
+        }
     },
     "require": {
         "omnipay/common": "^3"
