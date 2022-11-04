@@ -16,22 +16,22 @@ class WebhookRequest extends AbstractRequest
 
     public function getEvent()
     {
-        $this->getParameter('event');
+        return $this->getParameter('event');
     }
 
     public function setEvent(string $value)
     {
-        $this->setParameter('event', $value);
+        return $this->setParameter('event', $value);
     }
 
     public function getUrl()
     {
-        $this->getParameter('url');
+        return $this->getParameter('url');
     }
 
     public function setUrl(string $value)
     {
-        $this->setParameter('url', $value);
+        return $this->setParameter('url', $value);
     }
 
     /**
