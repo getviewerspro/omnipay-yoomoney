@@ -116,7 +116,10 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 
         try {
             $httpResponse = $this->httpClient->request(
-                $this->httpMethod, $requestUrl, $headers, $body
+                $this->httpMethod,
+                $requestUrl,
+                $headers,
+                $body
             );
 
             // Empty response body should be parsed also as and empty array
