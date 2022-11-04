@@ -21,8 +21,8 @@
     ],
     "autoload": {
         "psr-4": {
-            "Omnipay\\Yoomoney\\": "src",
-            "Omnipay\\Yoomoney\\Tests\\": "tests"
+            "Omnipay\\YooMoney\\": "src",
+            "Omnipay\\YooMoney\\Tests\\": "tests"
         }
     },
     "require": {

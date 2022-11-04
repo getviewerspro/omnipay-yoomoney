@@ -3,7 +3,7 @@
 namespace Omnipay\YooMoney;
 
 use Omnipay\Common\AbstractGateway;
-use Omnipay\YooMoney\Message;
+use Omnipay\YooMoney\Request;
 
 class Gateway extends AbstractGateway
 {
@@ -20,7 +20,7 @@ class Gateway extends AbstractGateway
         return [
             'shopId' => '',
             'secret' => '',
-            'token' => '',
+            'token' => null,
         ];
     }
 
@@ -29,7 +29,7 @@ class Gateway extends AbstractGateway
         return $this->getParameter('shopId');
     }
 
-    public function setShopId($value)
+    public function setShopId(string $value)
     {
         return $this->setParameter('shopId', $value);
     }
@@ -39,7 +39,7 @@ class Gateway extends AbstractGateway
         return $this->getParameter('secret');
     }
 
-    public function setSecret($value)
+    public function setSecret(string $value)
     {
         return $this->setParameter('secret', $value);
     }
@@ -49,9 +49,19 @@ class Gateway extends AbstractGateway
         return $this->getParameter('token');
     }
 
-    public function setToken($value)
+    public function setToken(?string $value)
     {
         return $this->setParameter('token', $value);
+    }
+
+    public function getLocale()
+    {
+        return $this->getParameter('locale');
+    }
+
+    public function setLocale(?string $value)
+    {
+        return $this->setParameter('locale', $value);
     }
 
     /**
@@ -59,7 +69,7 @@ class Gateway extends AbstractGateway
      */
     public function purchase(array $parameters = [])
     {
-        return $this->createRequest(Message\PurchaseRequest::class, $parameters);
+        return $this->createRequest(Request\PurchaseRequest::class, $parameters);
     }
 
     /**
@@ -67,7 +77,7 @@ class Gateway extends AbstractGateway
      */
     public function fetchPurchase(array $parameters = [])
     {
-        return $this->createRequest(Message\PurchaseFetchRequest::class, $parameters);
+        return $this->createRequest(Request\PurchaseFetchRequest::class, $parameters);
     }
 
     /**
@@ -75,7 +85,7 @@ class Gateway extends AbstractGateway
      */
     public function listPurchases(array $parameters = array())
     {
-        return $this->createRequest(Message\PurchaseListRequest::class, $parameters);
+        return $this->createRequest(Request\PurchaseListRequest::class, $parameters);
     }
 
     /**
@@ -83,7 +93,7 @@ class Gateway extends AbstractGateway
      */
     public function capturePurchase(array $parameters = [])
     {
-        return $this->createRequest(Message\PurchaseCaptureRequest::class, $parameters);
+        return $this->createRequest(Request\PurchaseCaptureRequest::class, $parameters);
     }
 
     /**
@@ -91,7 +101,7 @@ class Gateway extends AbstractGateway
      */
     public function cancelPurchase(array $parameters = [])
     {
-        return $this->createRequest(Message\PurchaseCancelRequest::class, $parameters);
+        return $this->createRequest(Request\PurchaseCancelRequest::class, $parameters);
     }
 
     /**
@@ -99,7 +109,7 @@ class Gateway extends AbstractGateway
      */
     public function refund(array $parameters = [])
     {
-        return $this->createRequest(Message\RefundRequest::class, $parameters);
+        return $this->createRequest(Request\RefundRequest::class, $parameters);
     }
 
     /**
@@ -107,7 +117,7 @@ class Gateway extends AbstractGateway
      */
     public function fetchRefund(array $parameters = [])
     {
-        return $this->createRequest(Message\RefundFetchRequest::class, $parameters);
+        return $this->createRequest(Request\RefundFetchRequest::class, $parameters);
     }
 
     /**
@@ -115,7 +125,7 @@ class Gateway extends AbstractGateway
      */
     public function listRefunds(array $parameters = [])
     {
-        return $this->createRequest(Message\RefundListRequest::class, $parameters);
+        return $this->createRequest(Request\RefundListRequest::class, $parameters);
     }
 
     /**
@@ -123,7 +133,7 @@ class Gateway extends AbstractGateway
      */
     public function receipt(array $parameters = [])
     {
-        return $this->createRequest(Message\ReceiptRequest::class, $parameters);
+        return $this->createRequest(Request\ReceiptRequest::class, $parameters);
     }
 
     /**
@@ -131,7 +141,7 @@ class Gateway extends AbstractGateway
      */
     public function fetchReceipt(array $parameters = [])
     {
-        return $this->createRequest(Message\ReceiptFetchRequest::class, $parameters);
+        return $this->createRequest(Request\ReceiptFetchRequest::class, $parameters);
     }
 
     /**
@@ -139,7 +149,7 @@ class Gateway extends AbstractGateway
      */
     public function listReceipts(array $parameters = [])
     {
-        return $this->createRequest(Message\ReceiptListRequest::class, $parameters);
+        return $this->createRequest(Request\ReceiptListRequest::class, $parameters);
     }
 
     /**
@@ -147,7 +157,7 @@ class Gateway extends AbstractGateway
      */
     public function deal(array $parameters = [])
     {
-        return $this->createRequest(Message\DealRequest::class, $parameters);
+        return $this->createRequest(Request\DealRequest::class, $parameters);
     }
 
     /**
@@ -155,7 +165,7 @@ class Gateway extends AbstractGateway
      */
     public function fetchDeal(array $parameters = [])
     {
-        return $this->createRequest(Message\DealFetchRequest::class, $parameters);
+        return $this->createRequest(Request\DealFetchRequest::class, $parameters);
     }
 
     /**
@@ -163,7 +173,7 @@ class Gateway extends AbstractGateway
      */
     public function listDeals(array $parameters = [])
     {
-        return $this->createRequest(Message\DealListRequest::class, $parameters);
+        return $this->createRequest(Request\DealListRequest::class, $parameters);
     }
 
     /**
@@ -171,7 +181,7 @@ class Gateway extends AbstractGateway
      */
     public function payout(array $parameters = [])
     {
-        return $this->createRequest(Message\PayoutRequest::class, $parameters);
+        return $this->createRequest(Request\PayoutRequest::class, $parameters);
     }
 
     /**
@@ -179,7 +189,7 @@ class Gateway extends AbstractGateway
      */
     public function fetchPayout(array $parameters = [])
     {
-        return $this->createRequest(Message\PayoutFetchRequest::class, $parameters);
+        return $this->createRequest(Request\PayoutFetchRequest::class, $parameters);
     }
 
     /**
@@ -187,15 +197,15 @@ class Gateway extends AbstractGateway
      */
     public function webhook(array $parameters = [])
     {
-        return $this->createRequest(Message\WebhookRequest::class, $parameters);
+        return $this->createRequest(Request\WebhookRequest::class, $parameters);
     }
 
     /**
      * @link https://yookassa.ru/developers/api?lang=en#get_webhook_list
      */
-    public function Listwebhooks(array $parameters = [])
+    public function listWebhooks(array $parameters = [])
     {
-        return $this->createRequest(Message\WebhookListRequest::class, $parameters);
+        return $this->createRequest(Request\WebhookListRequest::class, $parameters);
     }
 
     /**
@@ -203,7 +213,7 @@ class Gateway extends AbstractGateway
      */
     public function deleteWebhook(array $parameters = [])
     {
-        return $this->createRequest(Message\WebhookDeleteRequest::class, $parameters);
+        return $this->createRequest(Request\WebhookDeleteRequest::class, $parameters);
     }
 
     /**
@@ -211,12 +221,6 @@ class Gateway extends AbstractGateway
      */
     public function store(array $parameters = [])
     {
-        return $this->createRequest(Message\StoreRequest::class, $parameters);
-    }
-
-
-    public function notification(array $parameters = [])
-    {
-        return $this->createRequest(Message\NotificationRequest::class, $parameters);
+        return $this->createRequest(Request\StoreRequest::class, $parameters);
     }
 }
