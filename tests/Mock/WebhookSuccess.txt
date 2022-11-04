@@ -1,0 +1,8 @@
+HTTP/1.1 200 OK
+Date: Mon, 31 Oct 2022 12:00:00 UTC
+Server: Apache
+Content-Length: 122
+Connection: close
+Content-Type: application/json
+
+{"id":"e44e8088-bd73-43b1-959a-954f3a7d0c54","event":"payment.succeeded","url":"https://www.example.com/notification_url"}

@@ -1,0 +1,8 @@
+HTTP/1.1 200 OK
+Date: Mon, 31 Oct 2022 12:00:00 UTC
+Server: Apache
+Content-Length: 125
+Connection: close
+Content-Type: application/json
+
+{"account_id":"123","test":false,"fiscalization_enabled":true,"payment_methods":["bank_card","yoo_money"],"status":"enabled"}

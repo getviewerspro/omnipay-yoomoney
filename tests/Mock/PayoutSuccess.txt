@@ -1,0 +1,8 @@
+HTTP/1.1 200 OK
+Date: Mon, 31 Oct 2022 12:00:00 UTC
+Server: Apache
+Content-Length: 449
+Connection: close
+Content-Type: application/json
+
+{"id":"po-285ec15d-0003-5000-a000-08d1bec7dade","amount":{"value":"320.00","currency":"RUB"},"status":"pending","payout_destination":{"type":"bank_card","card":{"first6":"220220","last4":"2537","card_type":"MIR","issuer_country":"RU","issuer_name":"Sberbank Of Russia"}},"description":"Payout for order No. 37","created_at":"2021-06-18T14:28:45.132Z","deal":{"id":"dl-285e5ee7-0022-5000-8000-01516a44b147"},"metadata":{"order_id":"37"},"test":false}

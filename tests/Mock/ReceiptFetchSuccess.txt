@@ -1,0 +1,8 @@
+HTTP/1.1 200 OK
+Date: Mon, 31 Oct 2022 12:00:00 UTC
+Server: Apache
+Content-Length: 591
+Connection: close
+Content-Type: application/json
+
+{"id":"rt-2da5c87d-0384-50e8-a7f3-8d5646dd9e10","type":"payment","status":"succeeded","payment_id":"225d8da0-000f-50be-b000-0003308c89be","fiscal_document_number":"3997","fiscal_storage_number":"9288000100115786","fiscal_attribute":"2617603922","registered_at":"2019-09-18T10:06:42.985Z","fiscal_provider_id":"fd9e9404-eaca-4000-8ec9-dc228ead2346","items":[{"quantity":5,"amount":{"value":"1500.30","currency":"RUB"},"vat_code":2,"description":"Сapybara","payment_mode":"full_payment","payment_subject":"commodity"}],"tax_system_code":1,"settlements":[{"type":"cashless","amount":{"value":"45.67","currency":"RUB"}}]}

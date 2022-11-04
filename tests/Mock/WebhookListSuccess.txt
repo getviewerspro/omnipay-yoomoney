@@ -1,0 +1,8 @@
+HTTP/1.1 200 OK
+Date: Mon, 31 Oct 2022 12:00:00 UTC
+Server: Apache
+Content-Length: 270
+Connection: close
+Content-Type: application/json
+
+{"type":"list","items":[{"id":"e44e8088-bd73-43b1-959a-954f3a7d0c54","event":"payment.succeeded","url":"https://www.example.com/notification_url"},{"id":"8d30d343-3441-4af8-9e48-633b8e5e8c21","event":"payment.canceled","url":"https://www.example.com/notification_url"}]}
