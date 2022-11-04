@@ -1666,16 +1666,16 @@
         },
         {
             "name": "omnipay/tests",
-            "version": "v4.1.1",
+            "version": "v4.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/omnipay-tests.git",
-                "reference": "f415418bf13fc056da6a7091bda740cc945f8364"
+                "reference": "4412f542663a3d1ed45449a7d5282ea03cfe7acd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/omnipay-tests/zipball/f415418bf13fc056da6a7091bda740cc945f8364",
-                "reference": "f415418bf13fc056da6a7091bda740cc945f8364",
+                "url": "https://api.github.com/repos/thephpleague/omnipay-tests/zipball/4412f542663a3d1ed45449a7d5282ea03cfe7acd",
+                "reference": "4412f542663a3d1ed45449a7d5282ea03cfe7acd",
                 "shasum": ""
             },
             "require": {
@@ -1684,7 +1684,7 @@
                 "php": "^7.2|^8",
                 "php-http/discovery": "^1.14",
                 "php-http/mock-client": "^1.1",
-                "phpunit/phpunit": "^8.5|^9"
+                "phpunit/phpunit": "^8.5.14|^9"
             },
             "require-dev": {
                 "omnipay/common": "^3",
@@ -1726,9 +1726,9 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/omnipay-tests/issues",
-                "source": "https://github.com/thephpleague/omnipay-tests/tree/v4.1.1"
+                "source": "https://github.com/thephpleague/omnipay-tests/tree/v4.1.2"
             },
-            "time": "2021-06-05T11:50:35+00:00"
+            "time": "2022-10-31T14:30:25+00:00"
         },
         {
             "name": "phar-io/manifest",
