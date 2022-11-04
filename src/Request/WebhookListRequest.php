@@ -19,16 +19,6 @@ class WebhookListRequest extends AbstractRequest
      */
     protected $httpMethod = 'GET';
 
-    public function getWebhookId()
-    {
-        return $this->getParameter('webhook_id');
-    }
-
-    public function setWebhookId($value)
-    {
-        return $this->setParameter('webhook_id', $value);
-    }
-
     /**
      * @inheritDoc
      */

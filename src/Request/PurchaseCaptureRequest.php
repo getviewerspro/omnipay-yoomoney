@@ -55,7 +55,10 @@ class PurchaseCaptureRequest extends AbstractRequest
     public function getData()
     {
         return [
-            ...$this->getParametersIf('amount'),
+            'amount' => [
+                'value' => $this->getAmount(),
+                'currency' => $this->getCurrency(),
+            ],
             ...$this->getParametersIf('receipt'),
             ...$this->getParametersIf('airline'),
             ...$this->getParametersIf('transfers'),

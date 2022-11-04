@@ -19,7 +19,7 @@ class PurchaseListRequest extends AbstractRequest
         return $this->getParameter('created_at');
     }
 
-    public function setCreatedAt(string $value)
+    public function setCreatedAt(array $value)
     {
         return $this->setParameter('created_at', $value);
     }
@@ -29,7 +29,7 @@ class PurchaseListRequest extends AbstractRequest
         return $this->getParameter('captured_at');
     }
 
-    public function setCaptureAt(string $value)
+    public function setCaptureAt(array $value)
     {
         return $this->setParameter('captured_at', $value);
     }

@@ -16,12 +16,12 @@ class RefundFetchRequest extends AbstractRequest
 
     public function getRefundId()
     {
-        $this->getParameter('refund_id');
+        return $this->getParameter('refund_id');
     }
 
     public function setRefundId(string $value)
     {
-        $this->setParameter('refund_id', $value);
+        return $this->setParameter('refund_id', $value);
     }
 
     /**

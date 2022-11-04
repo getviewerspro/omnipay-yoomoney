@@ -16,12 +16,12 @@ class ReceiptFetchRequest extends AbstractRequest
 
     public function getReceiptId()
     {
-        $this->getParameter('receipt');
+        return $this->getParameter('receipt_id');
     }
 
     public function setReceiptId(string $value)
     {
-        $this->setParameter('receipt', $value);
+        return $this->setParameter('receipt_id', $value);
     }
 
     /**
