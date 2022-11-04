@@ -17,7 +17,7 @@ class DealRequestTest extends TestCase
         $this->request = new DealRequest($this->getHttpClient(), $this->getHttpRequest());
     }
 
-    public function testGetData()
+    public function testGettersAndSetters(): void
     {
         $this->request->setType('safe_deal');
         $this->assertSame($this->request->getType(), 'safe_deal');
@@ -30,6 +30,14 @@ class DealRequestTest extends TestCase
 
         $this->request->setDescription('description');
         $this->assertSame($this->request->getDescription(), 'description');
+    }
+
+    public function testGetData(): void
+    {
+        $this->request->setType('safe_deal');
+        $this->request->setFeeMoment('payment_succeeded');
+        $this->request->setMetadata(['order_id' => 37]);
+        $this->request->setDescription('description');
 
         $this->assertEquals([
             'type' => 'safe_deal',
@@ -39,5 +47,10 @@ class DealRequestTest extends TestCase
             ],
             'description' => 'description',
         ], $this->request->getData());
+    }
+
+    public function testGetEndPoint(): void
+    {
+        $this->assertSame($this->request->getEndPoint(), 'https://api.yookassa.ru/v3/deals');
     }
 }
