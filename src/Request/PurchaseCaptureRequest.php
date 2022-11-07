@@ -26,7 +26,7 @@ class PurchaseCaptureRequest extends AbstractRequest
 
     public function setAirline(array $value)
     {
-        return $this->setParameter('receipt', $value);
+        return $this->setParameter('airline', $value);
     }
 
     public function getTransfers()
@@ -36,7 +36,7 @@ class PurchaseCaptureRequest extends AbstractRequest
 
     public function setTransfers($value)
     {
-        return $this->setParameter('receipt', $value);
+        return $this->setParameter('transfers', $value);
     }
 
     public function getDeal()
@@ -46,7 +46,7 @@ class PurchaseCaptureRequest extends AbstractRequest
 
     public function setDeal(array $value)
     {
-        return $this->setParameter('receipt', $value);
+        return $this->setParameter('deal', $value);
     }
 
     /**

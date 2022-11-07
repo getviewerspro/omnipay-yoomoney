@@ -11,12 +11,12 @@ class PurchaseRequest extends AbstractRequest
 {
     public function getCustomerId()
     {
-        return $this->getParameter('customerId');
+        return $this->getParameter('customer_id');
     }
 
     public function setCustomerId(string $value)
     {
-        return $this->setParameter('customerId', $value);
+        return $this->setParameter('customer_id', $value);
     }
 
     public function getReceipt()
@@ -49,6 +49,16 @@ class PurchaseRequest extends AbstractRequest
         return $this->setParameter('payment_token', $value);
     }
 
+    public function getPaymentMethodId()
+    {
+        return $this->getParameter('payment_method_id');
+    }
+
+    public function setPaymentMethodId(string $value)
+    {
+        return $this->setParameter('payment_method_id', $value);
+    }
+
     public function getPaymentMethodData()
     {
         return $this->getParameter('payment_method_data');
@@ -67,6 +77,16 @@ class PurchaseRequest extends AbstractRequest
     public function setSavePaymentMethod(bool $value)
     {
         return $this->setParameter('save_payment_method', $value);
+    }
+
+    public function getCapture()
+    {
+        return $this->getParameter('capture');
+    }
+
+    public function setCapture(bool $value)
+    {
+        return $this->setParameter('capture', $value);
     }
 
     public function getMetadata()
@@ -134,15 +154,17 @@ class PurchaseRequest extends AbstractRequest
                 'return_url' => $this->getReturnUrl(),
             ],
             ...$this->getParametersIfAlternative('clientIp', 'client_ip'),
-            ...$this->getParametersIfAlternative('customerId', 'merchant_customer_id'),
+            ...$this->getParametersIfAlternative('customer_id', 'merchant_customer_id'),
 
             // Optional non omnipay parameters
             ...$this->getParametersIf('receipt'),
             ...$this->getParametersIf('recipient'),
             ...$this->getParametersIf('payment_token'),
+            ...$this->getParametersIf('payment_method_id'),
             ...$this->getParametersIf('payment_method_data'),
             ...$this->getParametersIf('save_payment_method'),
-            [
+            ...$this->getParametersIf('capture'),
+            ...[
                 'metadata' => [
                     'transactionId' => $this->getTransactionId(),
                     ...($this->parameters->has('metadata') ? $this->parameters->get('metadata') : []),

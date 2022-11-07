@@ -26,7 +26,7 @@ class WebhookDeleteRequestTest extends TestCase
         $this->assertSame($this->request->getWebhookId(), 'testing');
     }
 
-    public function testGetData()
+    public function testGetData(): void
     {
         $this->assertEquals([], $this->request->getData());
     }

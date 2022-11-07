@@ -3,16 +3,19 @@
 namespace Omnipay\YooMoney\Tests\Responses;
 
 use Omnipay\Tests\TestCase;
-use Omnipay\YooMoney\Response\DealFetchResponse;
+use Omnipay\YooMoney\Response\ReceiptFetchResponse;
 
-class DealFetchResponseTest extends TestCase
+/**
+ * YooMoney Response
+ */
+class ReceiptFetchResponseTest extends TestCase
 {
     public function testSuccessResponse()
     {
-        $httpResponse = $this->getMockHttpResponse('DealFetchSuccess.txt');
+        $httpResponse = $this->getMockHttpResponse('ReceiptFetchSuccess.txt');
         $data = json_decode($httpResponse->getBody()->getContents(), true);
 
-        $response = new DealFetchResponse($this->getMockRequest(), $data, $httpResponse->getStatusCode());
+        $response = new ReceiptFetchResponse($this->getMockRequest(), $data, $httpResponse->getStatusCode());
 
         $this->assertTrue($response->isSuccessful());
         $this->assertSame($response->getCode(), '');

@@ -54,11 +54,14 @@ class RefundRequest extends AbstractRequest
      */
     public function getData()
     {
-        $this->validate('payment_id', 'amount');
+        $this->validate('payment_id', 'amount', 'currency');
 
         return [
             ...$this->getParametersIf('payment_id'),
-            ...$this->getParametersIf('amount'),
+            'amount' => [
+                'value' => $this->getAmount(),
+                'currency' => $this->getCurrency(),
+            ],
             ...$this->getParametersIf('description'),
             ...$this->getParametersIf('receipt'),
             ...$this->getParametersIf('sources'),

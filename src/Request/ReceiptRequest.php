@@ -16,6 +16,16 @@ class ReceiptRequest extends AbstractRequest
     {
         return $this->setParameter('type', $value);
     }
+
+    public function getItems()
+    {
+        return $this->getParameter('items');
+    }
+
+    public function setItems($value)
+    {
+        return $this->setParameter('items', $value);
+    }
     
     public function getPaymentId()
     {

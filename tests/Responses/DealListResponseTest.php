@@ -1,6 +1,6 @@
 <?php
 
-namespace Omnipay\YooMoney\Tests\Requests;
+namespace Omnipay\YooMoney\Tests\Responses;
 
 use Omnipay\Tests\TestCase;
 use Omnipay\YooMoney\Response\DealListResponse;

@@ -20,7 +20,7 @@ class WebhookListRequestTest extends TestCase
         $this->request = new WebhookListRequest($this->getHttpClient(), $this->getHttpRequest());
     }
 
-    public function testGetData()
+    public function testGetData(): void
     {
         $this->assertEquals([], $this->request->getData());
     }
