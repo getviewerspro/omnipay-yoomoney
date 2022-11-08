@@ -41,7 +41,7 @@ class SecurityHelper
         $self = new self;
 
         if (! $self->isIPv6($ip)) {
-           return $self->checkInIPv4TrustedList($ip);
+            return $self->checkInIPv4TrustedList($ip);
         }
 
         if (! $self->isIPv4($ip)) {
@@ -82,7 +82,7 @@ class SecurityHelper
      */
     private function checkInIPv4TrustedList($ip)
     {
-        foreach($this->getIPv4TrustedList() as $range) {
+        foreach ($this->getIPv4TrustedList() as $range) {
             if ($this->isIPInV4Range($ip, $range)) {
                 return true;
             }
@@ -98,7 +98,7 @@ class SecurityHelper
      */
     private function checkInIPv6TrustedList($ip)
     {
-        foreach($this->getIPv6TrustedList() as $range) {
+        foreach ($this->getIPv6TrustedList() as $range) {
             if ($this->isIPInV6Range($ip, $range)) {
                 return true;
             }
