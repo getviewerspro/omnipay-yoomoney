@@ -2,8 +2,11 @@
 
 namespace Omnipay\YooMoney;
 
+use Exception;
 use Omnipay\Common\AbstractGateway;
+use Omnipay\YooMoney\Helpers\SecurityHelper;
 use Omnipay\YooMoney\Request;
+use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
 
 class Gateway extends AbstractGateway
 {
@@ -222,5 +225,16 @@ class Gateway extends AbstractGateway
     public function store(array $parameters = [])
     {
         return $this->createRequest(Request\StoreRequest::class, $parameters);
+    }
+
+    /**
+     * @link https://yookassa.ru/developers/using-api/webhooks#ip
+     */
+    public function verifyNotification()
+    {
+        $ipAddress = SymfonyRequest::createFromGlobals()->getClientIp();
+        if (!SecurityHelper::isIPTrusted($ipAddress)) {
+            throw new Exception('Notification cannot be verified');
+        }
     }
 }
