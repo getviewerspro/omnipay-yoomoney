@@ -35,6 +35,10 @@ jobs:
           coverage: none
           tools: composer:v2
 
+      - name: Skip ci error
+        run: |
+          composer config --no-plugins allow-plugins.php-http/discovery true
+
       - name: Install dependencies
         run: |
           composer update --${{ matrix.dependency-version }} --prefer-dist --no-progress
