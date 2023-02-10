@@ -157,7 +157,6 @@ class PurchaseRequest extends AbstractRequest
             ],
             $this->getParametersIfAlternative('clientIp', 'client_ip'),
             $this->getParametersIfAlternative('customer_id', 'merchant_customer_id'),
-
             // Optional non omnipay parameters
             $this->getParametersIf('receipt'),
             $this->getParametersIf('recipient'),
