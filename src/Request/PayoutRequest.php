@@ -56,18 +56,19 @@ class PayoutRequest extends AbstractRequest
     {
         $this->validate('amount');
 
-        return [
-            'amount' => [
-                'value' => $this->getAmount(),
-                'currency' => $this->getCurrency(),
+        return array_merge(
+            [
+                'amount' => [
+                    'value' => $this->getAmount(),
+                    'currency' => $this->getCurrency(),
+                ],
+                'payout_destination_data' => $this->getPayoutDestinationData(),
             ],
-            'payout_destination_data' => $this->getPayoutDestinationData(),
-
-            ...$this->getParametersIf('payout_token'),
-            ...$this->getParametersIf('description'),
-            ...$this->getParametersIf('deal'),
-            ...$this->getParametersIf('metadata'),
-        ];
+            $this->getParametersIf('payout_token'),
+            $this->getParametersIf('description'),
+            $this->getParametersIf('deal'),
+            $this->getParametersIf('metadata'),
+        );
     }
 
     /**

@@ -41,10 +41,10 @@ class WebhookRequest extends AbstractRequest
     {
         $this->validate('event', 'url');
 
-        return [
-            ...$this->getParametersIf('event'),
-            ...$this->getParametersIf('url'),
-        ];
+        return array_merge(
+            $this->getParametersIf('event'),
+            $this->getParametersIf('url'),
+        );
     }
 
     /**

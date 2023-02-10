@@ -79,14 +79,14 @@ class DealListRequest extends AbstractRequest
      */
     public function getData()
     {
-        return [
-            ...$this->getParametersIf('created_at'),
-            ...$this->getParametersIf('expires_at'),
-            ...$this->getParametersIf('status'),
-            ...$this->getParametersIf('full_text_search'),
-            ...$this->getParametersIf('limit'),
-            ...$this->getParametersIf('cursor'),
-        ];
+        return array_merge(
+            $this->getParametersIf('created_at'),
+            $this->getParametersIf('expires_at'),
+            $this->getParametersIf('status'),
+            $this->getParametersIf('full_text_search'),
+            $this->getParametersIf('limit'),
+            $this->getParametersIf('cursor'),
+        );
     }
 
     /**

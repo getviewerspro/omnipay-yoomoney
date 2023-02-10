@@ -46,13 +46,14 @@ class DealRequest extends AbstractRequest
     {
         $this->validate('type', 'fee_moment');
 
-        return [
-            'type' => $this->getType(),
-            'fee_moment' => $this->getFeeMoment(),
-
-            ...$this->getParametersIf('metadata'),
-            ...$this->getParametersIf('description'),
-        ];
+        return array_merge(
+            [
+                'type' => $this->getType(),
+                'fee_moment' => $this->getFeeMoment(),
+            ],
+            $this->getParametersIf('metadata'),
+            $this->getParametersIf('description'),
+        );
     }
 
     /**

@@ -69,14 +69,14 @@ class PurchaseListRequest extends AbstractRequest
      */
     public function getData()
     {
-        return [
-            ...$this->getParametersIf('created_at'),
-            ...$this->getParametersIf('captured_at'),
-            ...$this->getParametersIf('payment_method'),
-            ...$this->getParametersIf('status'),
-            ...$this->getParametersIf('limit'),
-            ...$this->getParametersIf('cursor'),
-        ];
+        return array_merge(
+            $this->getParametersIf('created_at'),
+            $this->getParametersIf('captured_at'),
+            $this->getParametersIf('payment_method'),
+            $this->getParametersIf('status'),
+            $this->getParametersIf('limit'),
+            $this->getParametersIf('cursor'),
+        );
     }
 
     /**

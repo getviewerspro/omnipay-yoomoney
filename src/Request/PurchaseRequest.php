@@ -141,40 +141,42 @@ class PurchaseRequest extends AbstractRequest
             'description',
         );
 
-        return [
+        return array_merge(
             // Using default omnipay parameters
-            'amount' => [
-                'value' => $this->getAmount(),
-                'currency' => $this->getCurrency(),
+            [
+                'amount' => [
+                    'value' => $this->getAmount(),
+                    'currency' => $this->getCurrency(),
+                ],
+                'description' => $this->getDescription(),
+                'confirmation' => array_merge(
+                    ['type' => 'redirect'],
+                    $this->getParametersIf('locale'),
+                    ['return_url' => $this->getReturnUrl()],
+                ),
             ],
-            'description' => $this->getDescription(),
-            'confirmation' => [
-                'type' => 'redirect',
-                ...$this->getParametersIf('locale'),
-                'return_url' => $this->getReturnUrl(),
-            ],
-            ...$this->getParametersIfAlternative('clientIp', 'client_ip'),
-            ...$this->getParametersIfAlternative('customer_id', 'merchant_customer_id'),
+            $this->getParametersIfAlternative('clientIp', 'client_ip'),
+            $this->getParametersIfAlternative('customer_id', 'merchant_customer_id'),
 
             // Optional non omnipay parameters
-            ...$this->getParametersIf('receipt'),
-            ...$this->getParametersIf('recipient'),
-            ...$this->getParametersIf('payment_token'),
-            ...$this->getParametersIf('payment_method_id'),
-            ...$this->getParametersIf('payment_method_data'),
-            ...$this->getParametersIf('save_payment_method'),
-            ...$this->getParametersIf('capture'),
-            ...[
-                'metadata' => [
-                    'transactionId' => $this->getTransactionId(),
-                    ...($this->parameters->has('metadata') ? $this->parameters->get('metadata') : []),
-                ],
+            $this->getParametersIf('receipt'),
+            $this->getParametersIf('recipient'),
+            $this->getParametersIf('payment_token'),
+            $this->getParametersIf('payment_method_id'),
+            $this->getParametersIf('payment_method_data'),
+            $this->getParametersIf('save_payment_method'),
+            $this->getParametersIf('capture'),
+            [
+                'metadata' => array_merge(
+                    ['transactionId' => $this->getTransactionId()],
+                    ($this->parameters->has('metadata') ? $this->parameters->get('metadata') : [])
+                ),
             ],
-            ...$this->getParametersIf('metadata'),
-            ...$this->getParametersIf('airline'),
-            ...$this->getParametersIf('transfers'),
-            ...$this->getParametersIf('deal'),
-        ];
+            $this->getParametersIf('metadata'),
+            $this->getParametersIf('airline'),
+            $this->getParametersIf('transfers'),
+            $this->getParametersIf('deal'),
+        );
     }
 
     /**

@@ -69,13 +69,13 @@ class RefundListRequest extends AbstractRequest
      */
     public function getData()
     {
-        return [
-            ...$this->getParametersIf('created_at'),
-            ...$this->getParametersIf('payment_id'),
-            ...$this->getParametersIf('status'),
-            ...$this->getParametersIf('limit'),
-            ...$this->getParametersIf('cursor'),
-        ];
+        return array_merge(
+            $this->getParametersIf('created_at'),
+            $this->getParametersIf('payment_id'),
+            $this->getParametersIf('status'),
+            $this->getParametersIf('limit'),
+            $this->getParametersIf('cursor'),
+        );
     }
 
     /**

@@ -79,14 +79,14 @@ class ReceiptListRequest extends AbstractRequest
      */
     public function getData()
     {
-        return [
-            ...$this->getParametersIf('created_at'),
-            ...$this->getParametersIf('status'),
-            ...$this->getParametersIf('payment_id'),
-            ...$this->getParametersIf('refund_id'),
-            ...$this->getParametersIf('limit'),
-            ...$this->getParametersIf('cursor'),
-        ];
+        return array_merge(
+            $this->getParametersIf('created_at'),
+            $this->getParametersIf('status'),
+            $this->getParametersIf('payment_id'),
+            $this->getParametersIf('refund_id'),
+            $this->getParametersIf('limit'),
+            $this->getParametersIf('cursor'),
+        );
     }
 
     /**

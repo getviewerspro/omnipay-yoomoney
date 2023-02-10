@@ -134,20 +134,20 @@ class ReceiptRequest extends AbstractRequest
     {
         $this->validate('type', 'customer', 'items', 'settlements');
 
-        return [
-            ...$this->getParametersIf('type'),
-            ...$this->getParametersIf('payment_id'),
-            ...$this->getParametersIf('refund_id'),
-            ...$this->getParametersIf('customer'),
-            ...$this->getParametersIf('items'),
-            ...$this->getParametersIf('send'),
-            ...$this->getParametersIf('tax_system_code'),
-            ...$this->getParametersIf('additional_user_props'),
-            ...$this->getParametersIf('receipt_industry_details'),
-            ...$this->getParametersIf('receipt_operational_details'),
-            ...$this->getParametersIf('settlements'),
-            ...$this->getParametersIf('on_behalf_of'),
-        ];
+        return array_merge(
+            $this->getParametersIf('type'),
+            $this->getParametersIf('payment_id'),
+            $this->getParametersIf('refund_id'),
+            $this->getParametersIf('customer'),
+            $this->getParametersIf('items'),
+            $this->getParametersIf('send'),
+            $this->getParametersIf('tax_system_code'),
+            $this->getParametersIf('additional_user_props'),
+            $this->getParametersIf('receipt_industry_details'),
+            $this->getParametersIf('receipt_operational_details'),
+            $this->getParametersIf('settlements'),
+            $this->getParametersIf('on_behalf_of'),
+        );
     }
 
     /**

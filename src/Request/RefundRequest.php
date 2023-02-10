@@ -56,17 +56,19 @@ class RefundRequest extends AbstractRequest
     {
         $this->validate('payment_id', 'amount', 'currency');
 
-        return [
-            ...$this->getParametersIf('payment_id'),
-            'amount' => [
-                'value' => $this->getAmount(),
-                'currency' => $this->getCurrency(),
+        return array_merge(
+            $this->getParametersIf('payment_id'),
+            [
+                'amount' => [
+                    'value' => $this->getAmount(),
+                    'currency' => $this->getCurrency(),
+                ],
             ],
-            ...$this->getParametersIf('description'),
-            ...$this->getParametersIf('receipt'),
-            ...$this->getParametersIf('sources'),
-            ...$this->getParametersIf('deal'),
-        ];
+            $this->getParametersIf('description'),
+            $this->getParametersIf('receipt'),
+            $this->getParametersIf('sources'),
+            $this->getParametersIf('deal'),
+        );
     }
 
     /**
