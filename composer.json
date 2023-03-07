@@ -29,6 +29,7 @@
     "require": {
         "php": "^8.0",
         "omnipay/common": "^3.2.0",
+        "symfony/http-foundation": "^6.0|^6.1|^6.2",
         "symfony/http-client": "^6.0|^6.1|^6.2",
         "http-interop/http-factory-guzzle": "^1.2"
     },
