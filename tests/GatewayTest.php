@@ -212,22 +212,21 @@ class GatewayTest extends GatewayTestCase
         $this->assertTrue($response->isSuccessful());
     }
 
-    public function testVerifyNotification()
+    public function testAcceptNotification()
     {
         $_SERVER['REMOTE_ADDR'] = '185.71.76.0';
 
-        $this->gateway->verifyNotification();
+        $response = $this->gateway->acceptNotification([])->send();
 
-        $this->expectNotToPerformAssertions();
+        $this->assertTrue($response->isSuccessful());
     }
 
-    public function testVerifyNotificationFail()
+    public function testAcceptNotificationFail()
     {
-        $this->expectException(\Exception::class);
-        $this->expectExceptionMessage('Notification cannot be verified');
+        $_SERVER['REMOTE_ADDR'] = '77.75.156.12';
 
-        $_SERVER['REMOTE_ADDR'] = '127.0.0.1';
+        $response = $this->gateway->acceptNotification([])->send();
 
-        $this->gateway->verifyNotification();
+        $this->assertFalse($response->isSuccessful());
     }
 }

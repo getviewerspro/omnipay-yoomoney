@@ -229,12 +229,21 @@ class Gateway extends AbstractGateway
 
     /**
      * @link https://yookassa.ru/developers/using-api/webhooks#ip
+     * @deprecated 0.0.4
      */
     public function verifyNotification()
     {
         $ipAddress = SymfonyRequest::createFromGlobals()->getClientIp();
-        if (!SecurityHelper::isIPTrusted($ipAddress)) {
+        if (! SecurityHelper::isIPTrusted($ipAddress)) {
             throw new Exception('Notification cannot be verified');
         }
+    }
+
+    /**
+     * @see https://yookassa.ru/developers/using-api/webhooks
+     */
+    public function acceptNotification(array $parameters = [])
+    {
+        return $this->createRequest(Request\NotificationRequest::class, $parameters);
     }
 }
