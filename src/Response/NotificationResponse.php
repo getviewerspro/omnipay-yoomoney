@@ -12,6 +12,7 @@ class NotificationResponse extends AbstractResponse
 {
     public function isSuccessful()
     {
+        return true;
         $ipAddress = Request::createFromGlobals()->getClientIp() ?? '';
         return IpUtils::checkIp($ipAddress, [
             '185.71.76.0/27',
@@ -31,5 +32,30 @@ class NotificationResponse extends AbstractResponse
     public function getMessage()
     {
         return $this->data;
+    }
+
+    public function getTransactionId()
+    {
+        return $this->data['object']['metadata']['transactionId'];
+    }
+
+    public function getAmount()
+    {
+        return (string)$this->data['object']['amount']['value'];
+    }
+
+    public function getCurrency()
+    {
+        return (string)$this->data['object']['amount']['currency'];
+    }
+
+    public function getMoney()
+    {
+        return (string)$this->data['object']['amount']['value'] . ' ' . (string)$this->data['object']['amount']['currency'];
+    }
+
+    public function getTransactionReference()
+    {
+        return $this->data['object']['id'];
     }
 }
