@@ -22,7 +22,7 @@ class NotificationResponse extends AbstractResponse
 
     public function isSuccessful()
     {
-        $ipAddress = Request::createFromGlobals()->getClientIp() ?? '';
+        $ipAddress = request()->header('x-forwarded-for') ?? Request::createFromGlobals()->getClientIp() ?? '';
         return IpUtils::checkIp($ipAddress, [
             '185.71.76.0/27',
             '185.71.77.0/27',
