@@ -15,6 +15,11 @@ class AbstractResponse extends OmnipayAbstractResponse
     {
         return $this->status == 200;
     }
+    
+    public function isRedirect()
+    {
+        return !empty($this->getRedirectUrl());
+    }
 
     public function getCode()
     {
