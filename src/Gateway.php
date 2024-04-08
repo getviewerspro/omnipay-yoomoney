@@ -74,6 +74,14 @@ class Gateway extends AbstractGateway
     {
         return $this->createRequest(Request\PurchaseRequest::class, $parameters);
     }
+    
+    /**
+     * @link https://yookassa.ru/developers/api?lang=en#create_payment
+     */
+    public function completePurchase(array $parameters = [])
+    {
+        return $this->createRequest(Request\NotificationRequest::class, $parameters);
+    }
 
     /**
      * @link https://yookassa.ru/developers/api?lang=en#get_payment
