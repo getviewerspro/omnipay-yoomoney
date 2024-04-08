@@ -4,15 +4,24 @@ namespace Omnipay\YooMoney\Response;
 
 use Symfony\Component\HttpFoundation\IpUtils;
 use Symfony\Component\HttpFoundation\Request;
+use Omnipay\YooMoney\Request\NotificationRequest;
 
 /**
  * YooMoney Response
  */
 class NotificationResponse extends AbstractResponse
 {
+    /**
+     * @var CompletePurchaseRequest|RequestInterface
+     */
+
+    public function __construct(NotificationRequest $request, $data)
+    {
+        $this->data = request()->all();
+    }
+
     public function isSuccessful()
     {
-        return true;
         $ipAddress = Request::createFromGlobals()->getClientIp() ?? '';
         return IpUtils::checkIp($ipAddress, [
             '185.71.76.0/27',
