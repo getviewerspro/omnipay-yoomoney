@@ -66,6 +66,16 @@ class Gateway extends AbstractGateway
     {
         return $this->setParameter('locale', $value);
     }
+    
+    public function getReceipt()
+    {
+        return $this->getParameter('receipt');
+    }
+
+    public function setReceipt(array $value)
+    {
+        return $this->setParameter('receipt', $value);
+    }
 
     /**
      * @link https://yookassa.ru/developers/api?lang=en#create_payment
