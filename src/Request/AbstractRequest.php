@@ -75,6 +75,16 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     {
         return $this->setParameter('locale', $value);
     }
+    
+    public function getRecipient()
+    {
+        return $this->getParameter('receipt');
+    }
+
+    public function setRecipient(array $value)
+    {
+        return $this->setParameter('receipt', $value);
+    }
 
     protected function getEndpoint()
     {
